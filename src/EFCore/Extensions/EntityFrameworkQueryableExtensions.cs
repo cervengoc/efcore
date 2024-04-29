@@ -2465,7 +2465,7 @@ public static class EntityFrameworkQueryableExtensions
         Check.NotNull(navigationPropertyPath, nameof(navigationPropertyPath));
 
         return new IncludableQueryable<TEntity, TProperty>(
-            source.Provider is EntityQueryProvider
+            source.Provider is IIncludableQueryProvider
                 ? source.Provider.CreateQuery<TEntity>(
                     Expression.Call(
                         instance: null,
@@ -2480,7 +2480,7 @@ public static class EntityFrameworkQueryableExtensions
         Expression<Func<TEntity, TProperty>> navigationPropertyPath)
         where TEntity : class
         => new IncludableQueryable<TEntity, TProperty>(
-            source.Provider is EntityQueryProvider
+            source.Provider is IIncludableQueryProvider
                 ? source.Provider.CreateQuery<TEntity>(
                     Expression.Call(
                         instance: null,
@@ -2527,7 +2527,7 @@ public static class EntityFrameworkQueryableExtensions
         Expression<Func<TPreviousProperty, TProperty>> navigationPropertyPath)
         where TEntity : class
         => new IncludableQueryable<TEntity, TProperty>(
-            source.Provider is EntityQueryProvider
+            source.Provider is IIncludableQueryProvider
                 ? source.Provider.CreateQuery<TEntity>(
                     Expression.Call(
                         instance: null,
